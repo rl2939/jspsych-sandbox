@@ -9,24 +9,13 @@
     <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.2"></script>
     <link href="https://unpkg.com/jspsych@7.3.3/css/jspsych.css" rel="stylesheet" type="text/css" />
     
-    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe@0.1"></script>
     <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script>
 </head>
 
 <body><!-- View at https://rl2939.github.io/jspsych-sandbox/demo-timed-task.html -->></body>
 <script>
     
-    const subject_id = jsPsych.randomization.randomID(10);
-    const filename = `${subject_id}.csv`;
-
-    const save_data = {
-        type: jsPsychPipe,
-        action: "save",
-        experiment_id: "lstk57SLaKFd",
-        filename: filename,
-        data_string: ()=>jsPsych.data.get().csv()
-    };
-         
+    
     /* initialize jsPsych */
     var jsPsych = initJsPsych({
         on_finish: function() {
@@ -147,7 +136,21 @@
     timeline.push(debrief_block);
 
     /* start the experiment */
-    jsPsych.run(timeline);   
+    jsPsych.run(timeline);
+
+
+    const subject_id = jsPsych.randomization.randomID(10);
+    const filename = `${subject_id}.csv`;
+
+
+    const save_data = {
+        type: jsPsychPipe,
+        action: "save",
+        experiment_id: "lstk57SLaKFd",
+        filename: filename,
+        data_string: ()=>jsPsych.data.get().csv()
+    };
+            
 
 </script>
 
